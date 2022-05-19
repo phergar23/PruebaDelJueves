@@ -1,0 +1,65 @@
+Tipo Simple - Etiqueta sin atributos con contenido de texto.
+
+<simpleType name="">
+	<restriction base="">
+		//Restricciones
+	</restriction>
+</simpleType>
+
+Tipos Complejos
+
+1- Etiqueta con atributos con contenido de texto. (Contenido Simple).
+
+<complexType name="">
+	<simpleContent>
+		<extension base="tipo_simple">
+			<attribute name="" type="SIEMPRE UN TIPO SIMPLE" />
+		</extension>
+	</simpleContent>
+</complexType>
+
+2- Etiqueta con hijos (atributos opcionales).
+
+<complexType name="">
+	<complexContent>
+		<restriction base="anyType">
+			<sequence>
+				<element name="" type="" />
+				...
+			</sequence>
+		</restriction>
+	</complexContent>
+</complexType>
+
+NOTA: Si no importa el orden, usamos <all>. Si queremos ofrecer diferentes grupos de hijos <choice>
+
+3- Etiqueta vacía (atributos opcionales).
+<complexType name="">
+	<complexContent>
+		<restriction base="anyType">
+			<attribute name="" type="SIEMPRE UN TIPO SIMPLE" /> [OPCIONALES]
+		</restriction>
+	</complexContent>
+</complexType>
+
+4- Etiqueta mixta. Como el 2 pero además permite texto al nivel de los hijos.
+<complexType name="" mixed="true">
+	<complexContent>
+		<restriction base="anyType">
+			<sequence>
+				<element name="" type="" />
+				...
+			</sequence>
+		</restriction>
+	</complexContent>
+</complexType>
+
+Cardinalidades: En las etiquetas <element> usamos los atributos minOccurs y maxOccurs (por defecto valen 1)."
+
+Atributos - <attribute name="" type="tipo_simple" [use=required] [default=""] [fixed=""]
+
+Para simplificar la escritura en ejercicios largos podemos recurrir a:
+
+<element ref=""> -> Enlaza a una etiqueta element definida fuera de la raíz (a nivel global)
+<group name=""> <group ref=""> -> Sirve para enlazar a un conjunto de hijos definidos a nivel global.
+<attributeGroup name=""> <attributeGroup ref=""> -> Sirve para enlazar a un conjunto de atributos definidos a nivel global.
